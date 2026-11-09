@@ -1,40 +1,46 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 public class WindowDrag : MonoBehaviour, IBeginDragHandler, IDragHandler
 {
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private RectTransform window;
-    [SerializeField] private RectTransform windowLayer;
-
+    private WindowFrame windowFrame;
+    private Canvas canvas;
     private Vector2 pointerOffset;
 
-    public void OnBeginDrag(PointerEventData eventData)
+    private void Awake()
     {
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            windowLayer,
-            eventData.position,
-            GetEventCamera(),
-            out Vector2 pointerLocalPosition
-        );
-
-        // đổi pos tại chỗ thì window sẽ nhảy vào tâm chuột -> tính offset
-        pointerOffset = window.anchoredPosition - pointerLocalPosition;
+        windowFrame = GetComponentInParent<WindowFrame>();
+        canvas = GetComponentInParent<Canvas>();
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData pointerData)
     {
+
+
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            windowLayer,
-            eventData.position,
+            windowFrame.Manager.WindowLayer,
+            pointerData.position,
             GetEventCamera(),
-            out Vector2 pointerLocalPosition
+            out Vector2 mousePosition
         );
 
-        window.anchoredPosition = pointerLocalPosition + pointerOffset;
+        pointerOffset = windowFrame.Rect.anchoredPosition - mousePosition;
 
-        // WindowManager.ClampToScreen(window) here ---------------------
+        windowFrame.Manager.ActivateWindow(windowFrame.Rect);
+    }
+
+    public void OnDrag(PointerEventData pointerData)
+    {
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            windowFrame.Manager.WindowLayer,
+            pointerData.position,
+            GetEventCamera(),
+            out Vector2 mousePosition
+        );
+
+        windowFrame.Rect.anchoredPosition = mousePosition + pointerOffset;
+
     }
 
     private Camera GetEventCamera()
