@@ -1,14 +1,28 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField] float remainingTime;
+    [SerializeField] private float TimeLimit;
+
+    public float remainingTime {get; private set; }
+    public bool isRunning {get; private set; }
+
+    public event Action<float> OnTimeChanged;
+    public event Action OnTimeExpired;
+
+    private void Awake()
+    {
+        ResetTimer();
+    }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (!isRunning) return;
+
         if (remainingTime > 0) 
         {
             remainingTime -= Time.deltaTime;
@@ -16,12 +30,35 @@ public class Timer : MonoBehaviour
         else if (remainingTime < 0)
         {
             remainingTime = 0;
+            isRunning = false;
+            OnTimeExpired?.Invoke();
             // run endgame
         }
 
-        int minutes = Mathf.FloorToInt(remainingTime / 60);
-        int seconds = Mathf.FloorToInt(remainingTime % 60);
+    }
 
-        timerText.text = string.Format("23:{0:00}:{1:00}", 59 - minutes , 59 - seconds);
+    private void ResetTimer()
+    {
+        remainingTime = TimeLimit;
+        isRunning = false;
+        OnTimeChanged?.Invoke(remainingTime);
+    }
+
+    private void StartTimer()
+    {
+        isRunning = true;
+    }
+
+    private void StopTimer()
+    {
+        isRunning = false;
+    }
+
+    public string GetFormattedTime()
+    {
+        int minutes = Mathf.CeilToInt(remainingTime / 60);
+        int seconds = Mathf.CeilToInt(remainingTime % 60);
+
+        return $"23:{minutes:00}:{seconds:00}";
     }
 }
