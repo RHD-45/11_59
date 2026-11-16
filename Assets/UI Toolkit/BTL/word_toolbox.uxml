@@ -1,0 +1,91 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: column; background-color: rgb(255, 255, 255);">
+        <ui:VisualElement name="Header" style="flex-grow: 1; height: 9px; align-items: auto; flex-direction: row; flex-basis: 30%; align-self: flex-start; width: 918px; border-bottom-width: 2px;">
+            <ui:Label text="File" name="File" style="font-size: 11px; background-color: rgb(255, 255, 255); -unity-text-align: lower-left; border-bottom-width: 2px;"/>
+            <ui:Label text="    &#10;Home" name="Home" style="font-size: 11px; -unity-font-style: bold; border-bottom-color: rgb(3, 9, 72); border-bottom-width: 2px; -unity-text-align: lower-center; white-space: nowrap; text-overflow: clip;"/>
+            <ui:Label text="Design" name="Design" style="font-size: 11px; -unity-text-align: lower-left; border-bottom-width: 2px;"/>
+            <ui:Label text="Insert" name="Insert" style="font-size: 11px; -unity-text-align: lower-left; border-bottom-width: 2px;"/>
+            <ui:Label text="Layout" name="Layout" style="font-size: 11px; -unity-text-align: lower-left; border-bottom-width: 2px;"/>
+            <ui:Label text="References" name="References" style="font-size: 11px; -unity-text-align: lower-left; border-bottom-width: 2px;"/>
+            <ui:Label text="Mailing" name="Mailing" style="font-size: 11px; -unity-text-align: lower-left; border-bottom-width: 2px;"/>
+            <ui:Label text="Review" name="Review" style="font-size: 11px; -unity-text-align: lower-left; border-bottom-width: 2px;"/>
+            <ui:Label text="View" name="View" style="font-size: 11px; -unity-text-align: lower-left; border-bottom-width: 2px;"/>
+            <ui:Label text="Help" name="Help" style="font-size: 11px; -unity-text-align: lower-left; border-bottom-width: 2px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="body" style="flex-grow: 1; flex-basis: 67%; flex-direction: row;">
+            <ui:VisualElement name="Clipboard" style="flex-grow: 1; flex-basis: 5%; border-right-width: 1px; border-left-color: rgb(217, 217, 217); border-right-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217); border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px;">
+                <ui:VisualElement name="Icons" style="flex-grow: 1; flex-direction: column;">
+                    <ui:Image name="Image" style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-3920341070980200243&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_4&quot;); height: 30px; flex-basis: auto; width: 23px; top: 18px; left: 2px;"/>
+                    <ui:Image name="Image" style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-570485511564636822&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_5&quot;); height: 15px; flex-basis: auto; width: 15px; top: -14px; left: 29px;"/>
+                    <ui:Image name="Image" style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-4062764136300503967&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_6&quot;); height: 15px; flex-basis: auto; width: 15px; top: -5px; left: 29px;"/>
+                    <ui:Image name="Image" style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-1294081118893909127&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_7&quot;); height: 15px; flex-basis: auto; width: 15px; top: 0; left: 29px;"/>
+                </ui:VisualElement>
+                <ui:Label text="Clipboard" style="-unity-text-align: middle-center; position: relative; bottom: auto; top: 0; flex-basis: 12px; font-size: 8px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="Font" style="flex-grow: 1; flex-basis: 20%; border-left-width: 0; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-right-color: rgb(217, 217, 217); border-right-width: 1px; border-left-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217);">
+                <ui:VisualElement name="Icons" style="flex-grow: 1; flex-direction: column;">
+                    <ui:VisualElement name="head" style="flex-grow: 1; flex-direction: row;">
+                        <ui:Label text="Times New Roman" style="font-size: 8px; background-size: 100% 46%; width: 83px; border-top-width: 1px; border-right-width: 1px; border-left-width: 1px; border-bottom-width: 1px; border-left-color: rgb(153, 153, 153); border-right-color: rgb(153, 153, 153); border-top-color: rgb(153, 153, 153); border-bottom-color: rgb(153, 153, 153); -unity-text-align: middle-left; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-right-radius: 2px;">
+                            <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=1196433520050306463&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_15&quot;); width: 12px; height: 12px; left: 70px; top: 6px;"/>
+                        </ui:Label>
+                        <ui:Label text="12" name="Label" style="font-size: 8px; background-size: 100% 46%; width: 29px; border-top-width: 1px; border-right-width: 1px; border-left-width: 1px; border-bottom-width: 1px; border-left-color: rgb(153, 153, 153); border-right-color: rgb(153, 153, 153); border-top-color: rgb(153, 153, 153); border-bottom-color: rgb(153, 153, 153); -unity-text-align: middle-left; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; left: -5px;">
+                            <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=1196433520050306463&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_15&quot;); width: 12px; height: 12px; left: 13px; top: 6px;"/>
+                        </ui:Label>
+                        <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=8890851673403045198&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_14&quot;); width: 17px; height: 15px; top: 7px; left: 14px;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="foot" style="flex-grow: 1;">
+                        <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-4026082593756814079&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_0&quot;); height: 18px;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label text="Font" style="-unity-text-align: middle-center; position: relative; bottom: auto; top: 0; flex-basis: 12px; font-size: 8px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="Paragraph" style="flex-grow: 1; flex-basis: 15%; border-right-width: 1px; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-right-color: rgb(217, 217, 217); border-left-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217);">
+                <ui:VisualElement name="Icons" style="flex-grow: 1;">
+                    <ui:VisualElement name="head" style="flex-grow: 1; flex-direction: row;">
+                        <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-4748613823708089226&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_3&quot;); width: 136px; height: 23px;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="foot" style="flex-grow: 1; flex-direction: row;">
+                        <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=4711607885502718441&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_1&quot;); height: 18px; width: 67px;"/>
+                        <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=7380483490119378246&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_2&quot;); height: 18px; width: 67px;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label text="Paragraph" style="-unity-text-align: middle-center; position: relative; bottom: auto; top: 0; flex-basis: 12px; font-size: 8px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="Styles" style="flex-grow: 1; flex-basis: 40%; border-right-width: 1px; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-right-color: rgb(217, 217, 217); border-left-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217);">
+                <ui:VisualElement name="Icons" style="flex-grow: 1;">
+                    <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-2773478559931028271&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_8&quot;); height: 51px;"/>
+                </ui:VisualElement>
+                <ui:Label text="Styles" style="-unity-text-align: middle-center; position: relative; bottom: auto; top: 0; flex-basis: 12px; font-size: 8px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="Editing" style="flex-grow: 1; flex-basis: 5%; border-right-width: 1px; border-right-color: rgb(217, 217, 217); border-left-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217);">
+                <ui:VisualElement name="Icons" style="flex-grow: 1;">
+                    <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-2823930265923022756&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_9&quot;); height: 62px;"/>
+                </ui:VisualElement>
+                <ui:Label text="Editing" style="-unity-text-align: middle-center; position: relative; bottom: auto; top: auto; flex-basis: 12px; font-size: 8px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="Voice" style="flex-grow: 1; flex-basis: 5%; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; border-right-width: 1px; border-right-color: rgb(217, 217, 217); border-left-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217);">
+                <ui:VisualElement name="Icons" style="flex-grow: 1;">
+                    <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-4474314324187053726&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_10&quot;); height: 74px;"/>
+                </ui:VisualElement>
+                <ui:Label text="Voice" style="-unity-text-align: middle-center; position: relative; bottom: auto; top: auto; flex-basis: 12px; font-size: 8px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="Sensitivity" style="flex-grow: 1; flex-basis: 5%; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-right-width: 1px; border-right-color: rgb(217, 217, 217); border-left-color: rgb(217, 217, 217); border-top-color: rgb(217, 217, 217); border-bottom-color: rgb(217, 217, 217);">
+                <ui:VisualElement name="Icons" style="flex-grow: 1;">
+                    <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-807589497703080128&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_11&quot;); height: 77px;"/>
+                </ui:VisualElement>
+                <ui:Label text="Sensitivity" style="-unity-text-align: middle-left; position: relative; bottom: auto; top: auto; flex-basis: 12px; font-size: 8px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="Editor" style="flex-grow: 1; flex-basis: 5%; border-top-width: 0; border-right-width: 1px; border-right-color: rgb(217, 217, 217); border-left-color: rgb(238, 238, 238); border-top-color: rgb(238, 238, 238); border-bottom-color: rgb(238, 238, 238);">
+                <ui:VisualElement name="Icons" style="flex-grow: 1;">
+                    <ui:Image style="background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-6235334516894629227&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_12&quot;); height: 82px;"/>
+                </ui:VisualElement>
+                <ui:Label text="Editor" style="-unity-text-align: middle-center; position: relative; bottom: auto; top: auto; flex-basis: 12px; font-size: 8px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="Add-ins" style="flex-grow: 1; flex-basis: 5%; border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; border-right-width: 0; border-right-color: rgb(145, 145, 145);">
+                <ui:VisualElement name="Icons" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/BTL/word_toolbox_icon.png?fileID=-1817951759254995016&amp;guid=2882db6b7b2a0044999600bbe9ede5a4&amp;type=3#word_toolbox_icon_13&quot;);"/>
+                <ui:Label text="Add-ins" style="-unity-text-align: middle-center; position: relative; bottom: auto; top: auto; flex-basis: 12px; font-size: 8px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Footer" style="flex-grow: 1; flex-basis: 3%; flex-shrink: 1; height: 1px;"/>
+    </ui:VisualElement>
+</ui:UXML>
