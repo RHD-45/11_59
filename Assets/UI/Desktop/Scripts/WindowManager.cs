@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using UnityEngine.InputSystem;
 public class WindowManager : MonoBehaviour
 {
     [SerializeField] private float screenPadding = 12f;
@@ -26,30 +26,39 @@ public class WindowManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        // Click vào đâu thì xét object UI trên cùng tại điểm đó.
-        if (!Input.GetMouseButtonDown(0) || EventSystem.current == null)
-            return;
+    
+private void Update()
+{
+    if (Mouse.current == null ||
+        !Mouse.current.leftButton.wasPressedThisFrame ||
+        EventSystem.current == null)
+        return;
 
-        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+    PointerEventData pointerData =
+        new PointerEventData(EventSystem.current)
         {
-            position = Input.mousePosition
+            position = Mouse.current.position.ReadValue()
         };
 
-        raycastResults.Clear();
-        EventSystem.current.RaycastAll(pointerData, raycastResults);
+    raycastResults.Clear();
 
-        if (raycastResults.Count == 0)
-            return;
+    EventSystem.current.RaycastAll(
+        pointerData,
+        raycastResults
+    );
 
-        // Chỉ xét object UI nằm trên cùng.
-        RectTransform clickedWindow = FindWindowRoot(raycastResults[0].gameObject.transform);
+    if (raycastResults.Count == 0)
+        return;
 
-        Debug.Log(clickedWindow);
-        if (clickedWindow != null)
-            ActivateWindow(clickedWindow);
-    }
+    RectTransform clickedWindow =
+        FindWindowRoot(raycastResults[0].gameObject.transform);
+
+    Debug.Log(clickedWindow);
+
+    if (clickedWindow != null)
+        ActivateWindow(clickedWindow);
+}
+
 
     public void ActivateWindow(RectTransform window)
     {
