@@ -3,13 +3,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    public Timer timer;
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
     public GameState State {get; private set;}
     public bool CanPlayerInteract => State == GameState.Playing;
     public bool IsTimerRunning => State != GameState.Ended;
 
-    void Start() => ChangeState(GameState.Playing);
+    private void Awake()
+    {
+        timer.OnTimeExpired += EndRun;
+    } 
+
+    private void Start()
+    {
+        ChangeState(GameState.Starting);
+        Debug.Log("Start() complete");
+    }
 
     public void ChangeState(GameState newState)
     {
@@ -22,8 +33,10 @@ public class GameManager : MonoBehaviour
                 StartRun();
                 break;
             case GameState.Playing:
-                if (!CanPlayerInteract) EndInterruption();
                 break;
+            // case GameState.Paused:
+            //     HandlePause();
+            //     break;
             case GameState.Interrupted:
                 BeginInterruption();
                 break;
@@ -32,6 +45,9 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Ended:
                 EndRun();
+                break;
+            case GameState.Result:
+                Result();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -45,36 +61,57 @@ public class GameManager : MonoBehaviour
     {
         /* to-do:
         - reset btl, saved, điểm, assignment
-        - start timer
+        - start timer     -----OK-----
         - spawn word
         - bắt đầu spawn btn/noti
         */
 
+        Debug.Log("starting");
+        timer.ResetTimer();
+        timer.StartTimer();
+        
+
         ChangeState(GameState.Playing);
 
     }
+    // private void HandlePause()
+    // {
+    //     timer.StopTimer();
+    // }
+
+    [ContextMenu("Interrupt")]
     private void BeginInterruption()
     {
         // to-do
-        ChangeState(GameState.Interrupted);
     }
 
+    [ContextMenu("End interrupt")]
     private void EndInterruption()
     {
         // to-do
         ChangeState(GameState.Playing);
     }
 
+    [ContextMenu("Submit")]
     private void BeginSubmission()
     {
         // to-do
-        ChangeState(GameState.Submitting);
+        
     }
 
+    [ContextMenu("End Game")]
     private void EndRun()
     {
         // to-do
-        ChangeState(GameState.Ended);
+        // - chạy animation done!
+        // - tắt timer? ---- OK ----
+        timer.StopTimer();
+    }
+
+    private void Result()
+    {
+        // to-do
+        // - chạy result
     }
 }
 
@@ -83,7 +120,9 @@ public enum GameState
 {
     Starting = 0,
     Playing = 1,
-    Interrupted = 2,
-    Submitting = 3,
-    Ended = 4
+    Paused = 2,
+    Interrupted = 3,
+    Submitting = 4,
+    Ended = 5,
+    Result = 6
 }
