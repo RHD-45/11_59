@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
             remainingTime -= Time.deltaTime;
             OnTimeChanged?.Invoke(remainingTime);
         }
-        else if (remainingTime < 0)
+        else if (remainingTime <= 0)
         {
             remainingTime = 0;
             isRunning = false;

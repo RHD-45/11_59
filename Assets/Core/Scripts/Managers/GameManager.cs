@@ -1,18 +1,28 @@
 using System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    [SerializeField]
-    public Timer timer;
+    [SerializeField] public AssignmentTracker tracker;
+    [SerializeField] public AssignmentSpawner spawner;
+    [SerializeField] public Timer timer;
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
     public GameState State {get; private set;}
     public bool CanPlayerInteract => State == GameState.Playing;
     public bool IsTimerRunning => State != GameState.Ended;
 
-    private void Awake()
+
+    // debug + end interrupted ở dưới
+    [ContextMenu("Interrupted")] void DebugInterrupted() => ChangeState(GameState.Interrupted);
+    [ContextMenu("Submitting")]  void DebugSubmitting()  => ChangeState(GameState.Submitting);
+    [ContextMenu("Ended")]       void DebugEnded()       => ChangeState(GameState.Ended);
+
+    protected override void Awake()
     {
+        base.Awake();
+        if (Instance != this) return;
+
         timer.OnTimeExpired += EndRun;
     } 
 
@@ -60,7 +70,7 @@ public class GameManager : MonoBehaviour
     private void StartRun()
     {
         /* to-do:
-        - reset btl, saved, điểm, assignment
+        - reset btl, saved, điểm, assignment    ----2/4---
         - start timer     -----OK-----
         - spawn word
         - bắt đầu spawn btn/noti
@@ -70,6 +80,7 @@ public class GameManager : MonoBehaviour
         timer.ResetTimer();
         timer.StartTimer();
         
+        tracker.ResetAll();
 
         ChangeState(GameState.Playing);
 
@@ -79,27 +90,24 @@ public class GameManager : MonoBehaviour
     //     timer.StopTimer();
     // }
 
-    [ContextMenu("Interrupt")]
     private void BeginInterruption()
     {
         // to-do
     }
 
-    [ContextMenu("End interrupt")]
+    [ContextMenu("End Interrupted")]
     private void EndInterruption()
     {
         // to-do
         ChangeState(GameState.Playing);
     }
 
-    [ContextMenu("Submit")]
     private void BeginSubmission()
     {
         // to-do
         
     }
 
-    [ContextMenu("End Game")]
     private void EndRun()
     {
         // to-do
