@@ -10,6 +10,7 @@ public class StressBar : MonoBehaviour
     [SerializeField] private float smoothSpeed = 8f;
     [SerializeField] private float minInterval = 0.3f;
     [SerializeField] private float maxStressThreshold = 0.99f;
+    [SerializeField] private float cooldownSpeed = 0.5f;
 
     private float _lastClickTime = -999f;
     private float burstStress = 0f;
@@ -50,7 +51,7 @@ public class StressBar : MonoBehaviour
 
     private void Update()
     {
-        _targetValue = Mathf.Max(0f, _targetValue - 0.0005f);
+        _targetValue = Mathf.Max(0f, _targetValue - cooldownSpeed * 0.001f);
 
         stressSlider.value = Mathf.Lerp(
             stressSlider.value,

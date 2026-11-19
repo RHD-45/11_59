@@ -6,14 +6,16 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public AssignmentTracker tracker;
     [SerializeField] public AssignmentSpawner spawner;
     [SerializeField] public Timer timer;
+    [SerializeField] public GameObject BTL;
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
-    public GameState State {get; private set;}
+    public static GameState State {get; private set;}
     public bool CanPlayerInteract => State == GameState.Playing;
     public bool IsTimerRunning => State != GameState.Ended;
 
 
     // debug + end interrupted ở dưới
+    [ContextMenu("Starting")]    void DebugStarting()    => ChangeState(GameState.Starting);
     [ContextMenu("Interrupted")] void DebugInterrupted() => ChangeState(GameState.Interrupted);
     [ContextMenu("Submitting")]  void DebugSubmitting()  => ChangeState(GameState.Submitting);
     [ContextMenu("Ended")]       void DebugEnded()       => ChangeState(GameState.Ended);
@@ -28,8 +30,10 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        ChangeState(GameState.Starting);
         Debug.Log("Start() complete");
+        DebugStarting();
+
+        ChangeState(GameState.Playing);
     }
 
     public void ChangeState(GameState newState)
@@ -82,8 +86,7 @@ public class GameManager : Singleton<GameManager>
         
         tracker.ResetAll();
 
-        ChangeState(GameState.Playing);
-
+        BTL.SetActive(true);
     }
     // private void HandlePause()
     // {

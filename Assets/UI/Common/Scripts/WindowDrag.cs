@@ -10,12 +10,20 @@ public class WindowDrag : MonoBehaviour, IBeginDragHandler, IDragHandler
     private void Awake()
     {
         windowFrame = GetComponentInParent<WindowFrame>();
+        // if (windowFrame == null) Debug.Log("no window frame");
         canvas = GetComponentInParent<Canvas>();
+        // if (canvas == null) Debug.Log("no canvas");
     }
 
     public void OnBeginDrag(PointerEventData pointerData)
     {
 
+        Debug.Log(
+            $"Frame: {windowFrame}, " +
+            $"Manager: {windowFrame?.Manager}, " +
+            $"Layer: {windowFrame?.Manager?.WindowLayer}, " +
+            $"Canvas: {canvas}"
+        );
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             windowFrame.Manager.WindowLayer,

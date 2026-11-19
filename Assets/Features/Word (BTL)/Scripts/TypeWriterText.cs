@@ -12,6 +12,7 @@ public class TypeWriterText : MonoBehaviour
     [SerializeField] private StressBar stressBar;
     [SerializeField] private ProgressBar progressBar;
     [SerializeField] private GameSaveManager saveManager;
+    private WindowFrame windowFrame;
 
     private ReadData readData = new ReadData();
 
@@ -58,6 +59,8 @@ public class TypeWriterText : MonoBehaviour
         progressBar.SetMaxWords(content.Length);
 
         GenerateRandomText();
+
+        windowFrame = GetComponentInParent<WindowFrame>();
     }
 
     void Update()
@@ -77,6 +80,9 @@ public class TypeWriterText : MonoBehaviour
 
     private void keyPress()
     {
+        if (!windowFrame.IsFocused) return;
+        if (GameManager.State != GameState.Playing) return;
+
         if (!stressBar.GetCanType())
             return;
 
