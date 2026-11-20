@@ -83,11 +83,10 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("starting");
         timer.ResetTimer();
         timer.StartTimer();
-        
-        tracker.ResetAll();
 
         BTL.SetActive(true);
     }
+
     // private void HandlePause()
     // {
     //     timer.StopTimer();
