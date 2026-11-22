@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public GameObject BTL;
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
-    public static GameState State {get; private set;}
+    public static GameState State {get; private set;} = GameState.None;
     public bool CanPlayerInteract => State == GameState.Playing;
     public bool IsTimerRunning => timer != null && timer.isRunning;
 
@@ -84,10 +84,8 @@ public class GameManager : Singleton<GameManager>
         timer.ResetTimer();
         timer.StartTimer();
 
-        spawner.StopRun();
-        spawner.StartRun();
-
         tracker.ResetRun();
+        spawner.StartRun();
 
         BTL.SetActive(true);
 
@@ -145,6 +143,7 @@ public class GameManager : Singleton<GameManager>
 [Serializable]
 public enum GameState
 {
+    None = -1,
     Starting = 0,
     Playing = 1,
     Paused = 2,
