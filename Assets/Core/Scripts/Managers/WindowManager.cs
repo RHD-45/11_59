@@ -59,10 +59,7 @@ private void Update()
         ActivateWindow(clickedWindow);
 }
 
-        // Debug.Log(clickedWindow);
-        if (clickedWindow != null)
-            ActivateWindow(clickedWindow);
-    }
+        
 
     public void ActivateWindow(RectTransform window)
     {
