@@ -7,9 +7,12 @@ public class Demo : MonoBehaviour
     private WindowFrame windowFrame;
     private int assignmentId;
     private AssignmentTracker tracker;
+
     void Awake()
     {
         windowFrame = GetComponentInParent<WindowFrame>();
+
+        windowFrame.SetCloseStatus(false);
     }
 
     // Update is called once per frame
@@ -32,7 +35,6 @@ public class Demo : MonoBehaviour
         if (tracker.IsAssignmentCompleted(assignmentId))
         {
             windowFrame.SetCloseStatus(true);
-            windowFrame.RequestClose();
         }
     }
 }

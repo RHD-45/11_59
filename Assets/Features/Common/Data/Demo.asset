@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80676c8c8b5b2ef4c9f39c89ccee3902, type: 3}
   m_Name: Demo
   m_EditorClassIdentifier: Assembly-CSharp::AssignmentDefinition
-  type: 2
-  displayName: IC Lab
+  type: 0
+  displayName: Demo
   tasks:
-  - taskName: 
-    score: 0
-  - taskName: 
-    score: 0
-  - taskName: 
-    score: 0
-  - taskName: 
-    score: 0
-  prefab: {fileID: 0}
+  - taskName: 1
+    score: 10
+  - taskName: 2
+    score: 20
+  - taskName: 3
+    score: 30
+  - taskName: 4
+    score: 40
+  prefab: {fileID: 5790008244423666609, guid: c48433403878b16419a04368f041ba10, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AssignmentSpawner : MonoBehaviour
 {
+    [SerializeField] private Transform windowParent;
     [SerializeField] private AssignmentTracker tracker;
     [SerializeField] private List<AssignmentDefinition> taskList = new List<AssignmentDefinition>();   // cài sẵn
     [SerializeField] private float minTimeBetweenSpawn;
@@ -58,6 +59,9 @@ public class AssignmentSpawner : MonoBehaviour
     {
         AssignmentState state = tracker.CreateNewAssignment(assignment);
 
-        GameObject window = Instantiate(assignment.prefab);
+        GameObject window = Instantiate(assignment.prefab, windowParent);
+
+        Demo demo = window.GetComponent<Demo>();
+        demo.Initialize(state.InstanceId, tracker);
     }
 }
