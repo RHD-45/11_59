@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -5,10 +6,10 @@ using UnityEngine;
 public class AssignmentSpawner : MonoBehaviour
 {
     [SerializeField] private AssignmentTracker tracker;
-    [SerializeField] private AssignmentDefinition[] taskList;   // cài sẵn
+    [SerializeField] private List<AssignmentDefinition> taskList = new List<AssignmentDefinition>();   // cài sẵn
     [SerializeField] private float minTimeBetweenSpawn;
     [SerializeField] private float maxRandomDelay;
-    [SerializeField] private float spawnerTimer;
+    private float spawnerTimer;
     private int assignmentsSpawned = 0;
 
     private Coroutine spawnRoutine;
@@ -16,6 +17,7 @@ public class AssignmentSpawner : MonoBehaviour
     public void StartRun()
     {
         StopRun();
+        assignmentsSpawned = 0;
         spawnRoutine = StartCoroutine(SpawnRoutine());
     }
 
@@ -30,7 +32,7 @@ public class AssignmentSpawner : MonoBehaviour
 
     private IEnumerator SpawnRoutine()
     {
-        while (assignmentsSpawned < taskList.Length)
+        while (assignmentsSpawned < taskList.Count)
         {
             float randomDelay = Random.Range(0f, maxRandomDelay);
             float waitTime = minTimeBetweenSpawn + randomDelay;
@@ -45,7 +47,7 @@ public class AssignmentSpawner : MonoBehaviour
 
     private void SpawnNextAssignment()
     {
-        if (assignmentsSpawned >= taskList.Length) return;
+        if (assignmentsSpawned >= taskList.Count) return;
 
         AssignmentDefinition definition = taskList[assignmentsSpawned];
         assignmentsSpawned++;

@@ -1,4 +1,5 @@
 using System.Linq;
+using UnityEngine;
 
 public class AssignmentState
 {
@@ -17,13 +18,16 @@ public class AssignmentState
         completedTasks = new bool[definition.tasks.Length];
     }
 
-    public void CompleteTask(int taskIndex)
+    public bool TryCompleteTask(int taskIndex)
     {
         // fallback??
-        // if (taskNum < 0 || taskNum >= taskCount) return false;
-        // if (completedTasks[taskNum]) return false;
+        if (taskIndex < 0 || taskIndex >= taskCount) return false;
+        if (completedTasks[taskIndex]) return false;
 
         completedTasks[taskIndex] = true;
+        Debug.Log("task completed");
+        return true;
+        
     }
 
     public bool IsTaskComplete(int taskIndex)

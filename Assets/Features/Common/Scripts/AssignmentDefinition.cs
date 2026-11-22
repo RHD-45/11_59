@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "NewBTN", menuName = "Game Data/BTN")]
 public class AssignmentDefinition : ScriptableObject
 {
     public AssigmentType  type;
