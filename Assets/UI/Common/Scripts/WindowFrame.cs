@@ -10,7 +10,7 @@ public class WindowFrame : MonoBehaviour, IPointerDownHandler
     private void Awake()
     {
         Rect = GetComponent<RectTransform>();
-        Manager = GetComponentInParent<WindowManager>();
+        Manager = GetComponentInParent<WindowManager>();    // gắn vào WindowLayer
 
         if (Manager == null)
         {
@@ -36,4 +36,13 @@ public class WindowFrame : MonoBehaviour, IPointerDownHandler
             Manager.CloseWindow(gameObject);
         }
     }
+
+    public bool IsFocused
+{
+    get
+    {
+        return Manager != null &&
+               Manager.ActiveWindow == Rect;
+    }
+}
 }

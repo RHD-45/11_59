@@ -4,7 +4,6 @@ using System;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] private float TimeLimit;
 
     public float remainingTime {get; private set; }
@@ -26,39 +25,39 @@ public class Timer : MonoBehaviour
         if (remainingTime > 0) 
         {
             remainingTime -= Time.deltaTime;
+            OnTimeChanged?.Invoke(remainingTime);
         }
-        else if (remainingTime < 0)
+        else if (remainingTime <= 0)
         {
             remainingTime = 0;
             isRunning = false;
             OnTimeExpired?.Invoke();
-            // run endgame
         }
 
     }
 
-    private void ResetTimer()
+    public void ResetTimer()
     {
         remainingTime = TimeLimit;
         isRunning = false;
         OnTimeChanged?.Invoke(remainingTime);
     }
 
-    private void StartTimer()
+    public void StartTimer()
     {
         isRunning = true;
     }
 
-    private void StopTimer()
+    public void StopTimer()
     {
         isRunning = false;
     }
 
     public string GetFormattedTime()
     {
-        int minutes = Mathf.CeilToInt(remainingTime / 60);
-        int seconds = Mathf.CeilToInt(remainingTime % 60);
+        int minutes = Mathf.FloorToInt(remainingTime / 60);
+        int seconds = Mathf.FloorToInt(remainingTime % 60);
 
-        return $"23:{minutes:00}:{seconds:00}";
+        return $"23:{(59-minutes):00}:{59-seconds:00}";
     }
 }
