@@ -46,7 +46,7 @@ public class WindowManager : MonoBehaviour
         // Chỉ xét object UI nằm trên cùng.
         RectTransform clickedWindow = FindWindowRoot(raycastResults[0].gameObject.transform);
 
-        Debug.Log(clickedWindow);
+        // Debug.Log(clickedWindow);
         if (clickedWindow != null)
             ActivateWindow(clickedWindow);
     }

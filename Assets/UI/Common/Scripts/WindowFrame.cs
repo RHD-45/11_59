@@ -31,7 +31,7 @@ public class WindowFrame : MonoBehaviour, IPointerDownHandler
         Manager?.ActivateWindow(Rect);
     }
 
-    public bool SetCloseStatus(bool status) => canClose = status;
+    public void SetCloseStatus(bool status) => canClose = status;
 
     public void RequestClose()
     {
