@@ -893,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3031903717046676290, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 750
+      value: 850
       objectReference: {fileID: 0}
     - target: {fileID: 3031903717046676290, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -951,6 +951,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3949326156294913062, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 460
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352980578274838783, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 460
+      objectReference: {fileID: 0}
     - target: {fileID: 5185863607223731712, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
       propertyPath: m_Name
       value: WordWindow
@@ -958,6 +966,26 @@ PrefabInstance:
     - target: {fileID: 5185863607223731712, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830465947537909520, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830465947537909520, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830465947537909520, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830465947537909520, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830465947537909520, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7783355074386396048, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
       propertyPath: m_AnchorMax.x

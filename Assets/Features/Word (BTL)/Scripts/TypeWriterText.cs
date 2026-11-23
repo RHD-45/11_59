@@ -91,6 +91,7 @@ public class TypeWriterText : MonoBehaviour
             if ((isKeyA && Keyboard.current.aKey.wasPressedThisFrame) ||
                 (!isKeyA && Keyboard.current.dKey.wasPressedThisFrame))
             {
+                Debug.Log("Đã hoàn thành toàn bộ văn bản!");
                 KeyPressSuccess();
             }
         }
