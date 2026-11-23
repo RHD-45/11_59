@@ -34,4 +34,24 @@ public class AssignmentState
     {
         return taskIndex >= 0 && taskIndex < taskCount && completedTasks[taskIndex];
     }
+
+    public int Score
+    {
+        get
+        {
+            int total = 0;
+
+            int rewardCount = Mathf.Min(
+                completedTaskCount,
+                Definition.rewardForCompletionOrder.Count
+            );
+
+            for (int i = 0; i < rewardCount; i++)
+            {
+                total += Definition.rewardForCompletionOrder[i];
+            }
+
+            return total;
+        }
+    }
 }

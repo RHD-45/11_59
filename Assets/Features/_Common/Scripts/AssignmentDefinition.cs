@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "NewBTN", menuName = "Game Data/BTN")]
 public class AssignmentDefinition : ScriptableObject
@@ -8,6 +9,7 @@ public class AssignmentDefinition : ScriptableObject
     public string       displayName;
     public AssignmentTaskDefinition[] tasks;
     public GameObject   prefab;
+    public List<int> rewardForCompletionOrder;
 }
 
 [Serializable]

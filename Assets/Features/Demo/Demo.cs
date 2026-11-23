@@ -1,22 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Demo : MonoBehaviour
+public class Demo : AssignmentWindow
 {
     [SerializeField] private Button[] taskButtons;
-    private WindowFrame windowFrame;
-    private int assignmentId;
-    private AssignmentTracker tracker;
-
-    void Awake()
-    {
-        windowFrame = GetComponentInParent<WindowFrame>();
-
-        windowFrame.SetCloseStatus(false);
-    }
 
     // Update is called once per frame
-    public void Initialize(int newAssignmentId, AssignmentTracker newTracker)
+    public override void Initialize(int newAssignmentId, AssignmentTracker newTracker)
     {
         assignmentId = newAssignmentId;
         tracker = newTracker;

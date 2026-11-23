@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System;
 
 public class WireDraw : MonoBehaviour,
     IPointerDownHandler,
@@ -29,6 +30,8 @@ public class WireDraw : MonoBehaviour,
     private bool isInvalid = false;
 
     private Vector2 lastPoint;
+
+    public event Action<int> OnWireConnected;
 
     void Start()
     {
@@ -167,19 +170,22 @@ public class WireDraw : MonoBehaviour,
             );
 
         if (correctTarget && !isInvalid)
-{
-    isConnected = true;
+        {
+            isConnected = true;
 
-    collisionChecker.SaveWire(points);
+            OnWireConnected?.Invoke(ledIndex);
 
-    // Bat LED tuong ung
-    if (puzzleManager != null)
-    {
-        puzzleManager.TurnOnLED(ledIndex);
-    }
+            collisionChecker.SaveWire(points);
 
-    Debug.Log("Correct! Wire saved.");
-}
+            // Bat LED tuong ung
+            if (puzzleManager != null)
+            {
+                puzzleManager.TurnOnLED(ledIndex);
+            }
+
+            Debug.Log("Correct! Wire saved.");
+            
+        }
         else
         {
             ResetWire();

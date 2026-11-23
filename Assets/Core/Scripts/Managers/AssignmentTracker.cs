@@ -33,9 +33,16 @@ public class AssignmentTracker : MonoBehaviour
             && assignment.isAssignmentCompleted;
     }
 
-    public bool hasEveryTaskCompletedOneTask()
+    public bool HasEveryTaskCompletedOneTask()
     {
         return assignments.Values.All(assignment => assignment.hasCompletedOneTask);
+    }
+
+    public int GetTotalAssignmentScore()
+    {
+        return assignments.Values.Sum(
+            assignment => assignment.Score
+        );
     }
 
     public void ResetRun()

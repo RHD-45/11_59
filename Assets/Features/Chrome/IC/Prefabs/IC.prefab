@@ -2719,7 +2719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774470931894398135, guid: e59bf03e97e0cbf47b30007089b1492d, type: 3}
       propertyPath: m_Name
-      value: WindowFrame1
+      value: IC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2730,7 +2730,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2101450921408602809, guid: e59bf03e97e0cbf47b30007089b1492d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2247903774108520513}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6774470931894398135, guid: e59bf03e97e0cbf47b30007089b1492d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3087073880303972912}
   m_SourcePrefab: {fileID: 100100000, guid: e59bf03e97e0cbf47b30007089b1492d, type: 3}
 --- !u!224 &1984650256836054476 stripped
 RectTransform:
@@ -2742,3 +2745,26 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3740061708970148341, guid: e59bf03e97e0cbf47b30007089b1492d, type: 3}
   m_PrefabInstance: {fileID: 478294834183139189}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6386385701048779714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6774470931894398135, guid: e59bf03e97e0cbf47b30007089b1492d, type: 3}
+  m_PrefabInstance: {fileID: 478294834183139189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3087073880303972912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6386385701048779714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9323d58aeabaa14f9b37f975d1f5a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ICAssignmentWindow
+  wires:
+  - {fileID: 1273467380925932172}
+  - {fileID: 7400337410883281359}
+  - {fileID: 725486618085949766}
+  - {fileID: 6393596185322264494}
+  - {fileID: 7375323246551471383}

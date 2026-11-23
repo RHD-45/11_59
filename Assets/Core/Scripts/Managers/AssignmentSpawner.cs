@@ -58,10 +58,10 @@ public class AssignmentSpawner : MonoBehaviour
     public void SpawnAssignment(AssignmentDefinition assignment)
     {
         AssignmentState state = tracker.CreateNewAssignment(assignment);
-
         GameObject window = Instantiate(assignment.prefab, windowParent);
+        AssignmentWindow assignmentWindow = window.GetComponent<AssignmentWindow>();
+        assignmentWindow.Initialize(state.InstanceId, tracker);
 
-        Demo demo = window.GetComponent<Demo>();
-        demo.Initialize(state.InstanceId, tracker);
+        
     }
 }
