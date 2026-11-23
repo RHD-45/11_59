@@ -7,6 +7,8 @@ public class WindowFrame : MonoBehaviour, IPointerDownHandler
     public RectTransform Rect { get; private set; }
     public WindowManager Manager { get; private set; }
 
+    private bool canClose = true;
+
     private void Awake()
     {
         Rect = GetComponent<RectTransform>();
@@ -29,8 +31,16 @@ public class WindowFrame : MonoBehaviour, IPointerDownHandler
         Manager?.ActivateWindow(Rect);
     }
 
+    public void SetCloseStatus(bool status) => canClose = status;
+
     public void RequestClose()
     {
+        if (!canClose)
+        {
+            Debug.Log("BTN chưa xong");
+            return;
+        }
+
         if (Manager != null)
         {
             Manager.CloseWindow(gameObject);

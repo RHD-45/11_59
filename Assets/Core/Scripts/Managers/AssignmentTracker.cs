@@ -1,39 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AssignmentTracker : MonoBehaviour
 {
-    public float BTLProgress;
-    public float savedBTLProgress;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private int nextInstanceId = 1;
+
+    private Dictionary<int,AssignmentState> assignments = new();
+    private event Action<AssignmentState> OnAssignmentCompleted;
+
+    public AssignmentState CreateNewAssignment(AssignmentDefinition definition)
     {
+        int instanceId = nextInstanceId++;
+        AssignmentState newState = new AssignmentState(instanceId, definition);
+        assignments.Add(instanceId, newState);
+        return newState;
+    }
+
+    public bool TryCompleteTask(int id, int taskIndex)
+    {
+        if (!assignments.TryGetValue(id, out AssignmentState currentAssignment)) return false;
+        
+        return currentAssignment.TryCompleteTask(taskIndex);
+        // OnAssignmentCompleted?.Invoke(currentAssignment);
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsAssignmentCompleted(int id)
     {
-        
+        return assignments.TryGetValue(id, out AssignmentState assignment)
+            && assignment.isAssignmentCompleted;
     }
 
-    public void ResetAll()
+    public bool HasEveryTaskCompletedOneTask()
     {
-        BTLProgress = 0.0f;
-        savedBTLProgress = 0.0f;
+        return assignments.Values.All(assignment => assignment.hasCompletedOneTask);
     }
 
-    public void AddBTLProgress(float progress)
+    public int GetTotalAssignmentScore()
     {
-        BTLProgress += progress;
+        return assignments.Values.Sum(
+            assignment => assignment.Score
+        );
     }
 
-    public void SaveBTLProgress()
+    public void ResetRun()
     {
-        savedBTLProgress = BTLProgress;
-    }
-
-    public void RevertBTLToLastSave()
-    {
-        BTLProgress = savedBTLProgress;
+        assignments.Clear();
+        nextInstanceId = 1;
     }
 }

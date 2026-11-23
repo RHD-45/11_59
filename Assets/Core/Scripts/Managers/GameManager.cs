@@ -9,9 +9,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] public GameObject BTL;
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
-    public static GameState State {get; private set;}
+    public static GameState State {get; private set;} = GameState.None;
     public bool CanPlayerInteract => State == GameState.Playing;
-    public bool IsTimerRunning => State != GameState.Ended;
+    public bool IsTimerRunning => timer != null && timer.isRunning;
 
 
     // debug + end interrupted ở dưới
@@ -25,19 +25,19 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
         if (Instance != this) return;
 
-        timer.OnTimeExpired += EndRun;
+        timer.OnTimeExpired += HandleTimeExpired;
     } 
 
     private void Start()
     {
-        Debug.Log("Start() complete");
-        DebugStarting();
+        // Debug.Log("Start() complete");
+        ChangeState(GameState.Starting);
 
-        ChangeState(GameState.Playing);
     }
 
     public void ChangeState(GameState newState)
     {
+        if (State == newState) return;
         OnBeforeStateChanged?.Invoke(newState);
 
         State = newState;
@@ -76,18 +76,22 @@ public class GameManager : Singleton<GameManager>
         /* to-do:
         - reset btl, saved, điểm, assignment    ----2/4---
         - start timer     -----OK-----
-        - spawn word
-        - bắt đầu spawn btn/noti
+        - spawn word      -----OK-----
+        - bắt đầu spawn btn/noti    ----OK----
         */
 
         Debug.Log("starting");
         timer.ResetTimer();
         timer.StartTimer();
-        
-        tracker.ResetAll();
+
+        tracker.ResetRun();
+        spawner.StartRun();
 
         BTL.SetActive(true);
+
+        ChangeState(GameState.Playing);
     }
+
     // private void HandlePause()
     // {
     //     timer.StopTimer();
@@ -111,12 +115,14 @@ public class GameManager : Singleton<GameManager>
         
     }
 
+    private void HandleTimeExpired() => ChangeState(GameState.Ended);
     private void EndRun()
     {
         // to-do
         // - chạy animation done!
         // - tắt timer? ---- OK ----
         timer.StopTimer();
+        spawner.StopRun();
     }
 
     private void Result()
@@ -124,11 +130,20 @@ public class GameManager : Singleton<GameManager>
         // to-do
         // - chạy result
     }
+
+    private void OnDestroy()
+    {
+        if (timer != null)
+        {
+            timer.OnTimeExpired -= HandleTimeExpired;
+        }
+    }
 }
 
 [Serializable]
 public enum GameState
 {
+    None = -1,
     Starting = 0,
     Playing = 1,
     Paused = 2,
