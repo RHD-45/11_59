@@ -12,7 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80676c8c8b5b2ef4c9f39c89ccee3902, type: 3}
   m_Name: ICLab
   m_EditorClassIdentifier: Assembly-CSharp::AssignmentDefinition
-  type: 0
-  displayName: 
-  tasks: []
-  prefab: {fileID: 0}
+  type: 2
+  displayName: IC Lab
+  tasks:
+  - taskName: 
+    score: 0
+  - taskName: 
+    score: 0
+  - taskName: 
+    score: 0
+  - taskName: 
+    score: 0
+  - taskName: 
+    score: 0
+  prefab: {fileID: 6386385701048779714, guid: e9798096fc7fdbc44a77ea6d5ca2ccea, type: 3}
+  rewardForCompletionOrder: 0a0000000a000000140000001400000028000000i
