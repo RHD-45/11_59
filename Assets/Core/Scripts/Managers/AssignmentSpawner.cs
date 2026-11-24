@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class AssignmentSpawner : MonoBehaviour
 {
+    public event System.Action<Transform> OnSpawning;
     [SerializeField] private Transform windowParent;
     [SerializeField] private AssignmentTracker tracker;
     [SerializeField] private List<AssignmentDefinition> taskList = new List<AssignmentDefinition>();   // cài sẵn
@@ -61,7 +61,6 @@ public class AssignmentSpawner : MonoBehaviour
         GameObject window = Instantiate(assignment.prefab, windowParent);
         AssignmentWindow assignmentWindow = window.GetComponent<AssignmentWindow>();
         assignmentWindow.Initialize(state.InstanceId, tracker);
-
-        
+        OnSpawning?.Invoke(window.transform);
     }
 }
