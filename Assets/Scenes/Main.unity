@@ -119,6 +119,83 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &124090729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124090730}
+  - component: {fileID: 124090732}
+  - component: {fileID: 124090731}
+  m_Layer: 0
+  m_Name: ToastContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &124090730
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124090729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 891305908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -20, y: 20}
+  m_SizeDelta: {x: 380, y: 0}
+  m_Pivot: {x: 1, y: 0}
+--- !u!114 &124090731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124090729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
+--- !u!114 &124090732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124090729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 12
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &173409731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5185863607223731712, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
@@ -610,6 +687,8 @@ GameObject:
   - component: {fileID: 891305911}
   - component: {fileID: 891305910}
   - component: {fileID: 891305909}
+  - component: {fileID: 891305913}
+  - component: {fileID: 891305912}
   m_Layer: 0
   m_Name: NotificationLayer
   m_TagString: Untagged
@@ -628,7 +707,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 124090730}
   m_Father: {fileID: 540578871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -690,7 +770,7 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
@@ -698,8 +778,37 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!114 &891305912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891305907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bd62fad97adf848804bf31b41ec1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SystemToastPool
+  prefab: {fileID: 9182617357030985530, guid: 96f625259f08e7b499e528fb5890398d, type: 3}
+  Pool_Size: 10
+--- !u!114 &891305913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891305907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea9cae550964d54c92430b4508f17ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NotificationManager
+  toastContainer: {fileID: 124090730}
+  systemToastPool: {fileID: 891305912}
+  maxVisibleToasts: 12
 --- !u!1 &895972798
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,7 +854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2667513907625465043, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
       propertyPath: cooldownSpeed
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3031903717046676290, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
       propertyPath: m_Pivot.x
@@ -861,6 +970,54 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3031903717046676290, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
   m_PrefabInstance: {fileID: 1124323057}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1131914609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131914610}
+  - component: {fileID: 1131914611}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1131914610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131914609}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1377049821}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1131914611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131914609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec48325fd4f386468ba29fd2605c0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
+  BTL: {fileID: 1490740778}
+  BTN: {fileID: 209078512}
+  maxBTLScore: 850
+  maxBTNScore: 150
 --- !u!1 &1288312355
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,10 +1067,9 @@ MonoBehaviour:
   taskList:
   - {fileID: 11400000, guid: 91a410f4c38337b4daafd20b434f32d3, type: 2}
   - {fileID: 11400000, guid: 91a410f4c38337b4daafd20b434f32d3, type: 2}
+  - {fileID: 11400000, guid: 980beced445576e42ac1fdf21bebc957, type: 2}
   - {fileID: 11400000, guid: 91a410f4c38337b4daafd20b434f32d3, type: 2}
-  - {fileID: 11400000, guid: 91a410f4c38337b4daafd20b434f32d3, type: 2}
-  - {fileID: 11400000, guid: 91a410f4c38337b4daafd20b434f32d3, type: 2}
-  - {fileID: 11400000, guid: 91a410f4c38337b4daafd20b434f32d3, type: 2}
+  - {fileID: 11400000, guid: 980beced445576e42ac1fdf21bebc957, type: 2}
   minTimeBetweenSpawn: 3
   maxRandomDelay: 1
 --- !u!1 &1333481833
@@ -1100,8 +1256,20 @@ Transform:
   - {fileID: 1833682116}
   - {fileID: 209078511}
   - {fileID: 1288312356}
+  - {fileID: 1131914610}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1490740778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 200426430615908804, guid: ecf44a02dcf96654491901c344dcfec3, type: 3}
+  m_PrefabInstance: {fileID: 1124323057}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549db82a3cfe7c548a511b7b8492010e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TypeWriterText
 --- !u!1 &1794133957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165ba6c6b3e05ea46a4fd5cc0dd6178c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  TimeLimit: 30
+  TimeLimit: 60
 --- !u!4 &1833682116
 Transform:
   m_ObjectHideFlags: 0

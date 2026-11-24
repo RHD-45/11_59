@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using System;
 
 [RequireComponent(typeof(TMP_Text))]
 public class TypeWriterText : MonoBehaviour
@@ -45,9 +46,11 @@ public class TypeWriterText : MonoBehaviour
 
     private float stressPoint = 0.048f;
 
+    public event Action OnBTLChanged;
+
     void Start()
     {
-        selectedFileIndex = Random.Range(
+        selectedFileIndex = UnityEngine.Random.Range(
             0,
             file_content_path.Length
         );
@@ -88,8 +91,7 @@ public class TypeWriterText : MonoBehaviour
 
         if (Keyboard.current != null)
         {
-            if ((isKeyA && Keyboard.current.aKey.wasPressedThisFrame) ||
-                (!isKeyA && Keyboard.current.dKey.wasPressedThisFrame))
+            if ((Keyboard.current.anyKey.wasPressedThisFrame))      // FIX THIS LATER, DOESNT WORK FOR MULTIPLE KEYSTROKES
             {
                 KeyPressSuccess();
             }
@@ -126,6 +128,8 @@ public class TypeWriterText : MonoBehaviour
 
         progressBar.UpdateProgress(totalChar);
         stressBar.SetStress(stressPoint);
+
+        OnBTLChanged?.Invoke();
 
         if (currentCharInPage >= generatedText.Length)
         {
@@ -290,5 +294,10 @@ public class TypeWriterText : MonoBehaviour
         UpdateTypingProgress();
 
         Debug.Log("Đã khôi phục checkpoint!");
+    }
+
+    public float GetBTLProgress()
+    {
+        return progressBar.GetProgress();
     }
 }

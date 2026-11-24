@@ -6,7 +6,7 @@ public class NotificationManager : Singleton<NotificationManager>
     [Header("Toast Manager Settings")]
     [SerializeField] private RectTransform toastContainer;
     [SerializeField] private SystemToastPool systemToastPool;
-    [SerializeField] private int maxVisibleToasts = 4;
+    [SerializeField] private int maxVisibleToasts = 12;
 
     private Queue<ToastData> pendingQueue = new Queue<ToastData>();
     private List<ToastNotificationBase> activeToasts = new List<ToastNotificationBase>();

@@ -717,7 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NotificationManager
   toastContainer: {fileID: 1828685036}
   systemToastPool: {fileID: 891305913}
-  maxVisibleToasts: 4
+  maxVisibleToasts: 12
 --- !u!114 &891305913
 MonoBehaviour:
   m_ObjectHideFlags: 0

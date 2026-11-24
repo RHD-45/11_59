@@ -9,6 +9,7 @@ public class AssignmentTracker : MonoBehaviour
 
     private Dictionary<int,AssignmentState> assignments = new();
     private event Action<AssignmentState> OnAssignmentCompleted;
+    public event Action<int,int> OnTaskCompleted;
 
     public AssignmentState CreateNewAssignment(AssignmentDefinition definition)
     {
@@ -22,7 +23,11 @@ public class AssignmentTracker : MonoBehaviour
     {
         if (!assignments.TryGetValue(id, out AssignmentState currentAssignment)) return false;
         
-        return currentAssignment.TryCompleteTask(taskIndex);
+        bool taskCompleted =  currentAssignment.TryCompleteTask(taskIndex);
+        if (!taskCompleted) return false;
+
+        OnTaskCompleted?.Invoke(id, taskIndex);
+        return true;
         // OnAssignmentCompleted?.Invoke(currentAssignment);
         
     }
@@ -36,6 +41,11 @@ public class AssignmentTracker : MonoBehaviour
     public bool HasEveryTaskCompletedOneTask()
     {
         return assignments.Values.All(assignment => assignment.hasCompletedOneTask);
+    }
+
+    public int GetMaximumAssignmentScore()
+    {
+        return 100 * assignments.Count;
     }
 
     public int GetTotalAssignmentScore()
