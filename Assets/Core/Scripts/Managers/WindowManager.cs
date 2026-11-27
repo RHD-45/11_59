@@ -14,6 +14,8 @@ public class WindowManager : MonoBehaviour
 
     public RectTransform WindowLayer { get; private set; }
 
+    public event System.Action<Transform> OnWindowClosed;
+
     private void Awake()
     {
         Instance = this;
@@ -106,6 +108,7 @@ private void Update()
             ActiveWindow = null;
         }
 
+        OnWindowClosed?.Invoke(targetWindow.transform);
         targetWindow.SetActive(false);
     }
 

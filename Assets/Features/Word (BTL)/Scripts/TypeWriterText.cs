@@ -42,7 +42,6 @@ public class TypeWriterText : MonoBehaviour
 
     private string generatedText = "";
 
-    private bool isKeyA = true;
     private int currentPage = 1;
     private int currentCharInPage = 0;
 
@@ -160,8 +159,6 @@ public class TypeWriterText : MonoBehaviour
             }
         }
 
-        isKeyA = !isKeyA;
-
         currentCharInPage++;
         totalChar++;
 
@@ -277,7 +274,6 @@ public class TypeWriterText : MonoBehaviour
 
         data.readDataIndex = readData.GetIndex();
 
-        data.isKeyA = isKeyA;
         data.fileIndex = selectedFileIndex;
 
         data.stressValue = stressBar.GetStress();
@@ -326,7 +322,6 @@ public class TypeWriterText : MonoBehaviour
         totalChar = data.totalChar;
         totalWords = data.totalWords;
 
-        isKeyA = data.isKeyA;
 
         readData.SetIndex(data.readDataIndex);
 
