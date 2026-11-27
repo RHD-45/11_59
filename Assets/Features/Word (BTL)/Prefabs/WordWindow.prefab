@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 722.30005, y: 450.3}
+  m_AnchoredPosition: {x: 0, y: 19}
+  m_SizeDelta: {x: 722.30005, y: 460}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6499272323955615152
 CanvasRenderer:
@@ -322,8 +322,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0000076293945}
-  m_SizeDelta: {x: 722.30005, y: 450.3}
+  m_AnchoredPosition: {x: 0, y: 19}
+  m_SizeDelta: {x: 722.30005, y: 460}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3779274621600314177
 CanvasRenderer:
@@ -648,7 +648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 8}
+  m_AnchoredPosition: {x: 0, y: 39}
   m_SizeDelta: {x: 825, y: 64.1}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &8677495912806857347
@@ -718,6 +718,11 @@ MonoBehaviour:
   smoothSpeed: 8
   minInterval: 0.3
   maxStressThreshold: 0.99
+  cooldownSpeed: 0.5
+  shakeTriggerRatio: 0.8
+  shakeMagnitude: 6
+  tiltAngle: 5.62
+  tiltSpeed: 10
 --- !u!1 &8299922010111382819
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3740061708970148341, guid: e59bf03e97e0cbf47b30007089b1492d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 750
+      value: 850
       objectReference: {fileID: 0}
     - target: {fileID: 3740061708970148341, guid: e59bf03e97e0cbf47b30007089b1492d, type: 3}
       propertyPath: m_LocalPosition.x

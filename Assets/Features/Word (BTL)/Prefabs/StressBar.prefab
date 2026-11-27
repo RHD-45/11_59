@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 8490248958454180158}
   - component: {fileID: 3683214332341427076}
   - component: {fileID: 636033833395875980}
+  - component: {fileID: 3180277094539082661}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -282,6 +283,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StressBar
   stressSlider: {fileID: 3683214332341427076}
   smoothSpeed: 8
+  minInterval: 0.3
+  maxStressThreshold: 0.99
+  cooldownSpeed: 0.5
+--- !u!95 &3180277094539082661
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416128297095361720}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cff64bdc132dcf04a89216e09b1455c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6379588341462567101
 GameObject:
   m_ObjectHideFlags: 0
