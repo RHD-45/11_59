@@ -24,3 +24,4 @@ MonoBehaviour:
   - taskName: 4
     score: 40
   prefab: {fileID: 5790008244423666609, guid: c48433403878b16419a04368f041ba10, type: 3}
+  rewardForCompletionOrder: 0a000000140000001e00000028000000i

@@ -5,6 +5,8 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] public AssignmentTracker tracker;
     [SerializeField] public AssignmentSpawner spawner;
+    [SerializeField] public ScoreManager scoreManager;
+    [SerializeField] public InterruptionManager interruptionManager;
     [SerializeField] public Timer timer;
     [SerializeField] public GameObject BTL;
     public static event Action<GameState> OnBeforeStateChanged;
@@ -26,6 +28,7 @@ public class GameManager : Singleton<GameManager>
         if (Instance != this) return;
 
         timer.OnTimeExpired += HandleTimeExpired;
+        interruptionManager.OnInterruptionFinished += HandleInterruptionFinished;
     } 
 
     private void Start()
@@ -112,10 +115,15 @@ public class GameManager : Singleton<GameManager>
     private void BeginSubmission()
     {
         // to-do
-        
+        scoreManager.FinalizeScore();
     }
 
     private void HandleTimeExpired() => ChangeState(GameState.Ended);
+    private void HandleInterruptionFinished(InterruptionDefinition definition)
+    {
+        if (State == GameState.Interrupted) EndInterruption(); 
+    }
+
     private void EndRun()
     {
         // to-do
@@ -123,6 +131,8 @@ public class GameManager : Singleton<GameManager>
         // - tắt timer? ---- OK ----
         timer.StopTimer();
         spawner.StopRun();
+
+        
     }
 
     private void Result()

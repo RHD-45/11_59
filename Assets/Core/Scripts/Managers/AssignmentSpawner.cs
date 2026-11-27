@@ -62,6 +62,17 @@ public class AssignmentSpawner : MonoBehaviour
         AssignmentWindow assignmentWindow = window.GetComponent<AssignmentWindow>();
         assignmentWindow.Initialize(state.InstanceId, tracker);
 
+        // noti
+        EventBroker.onToastRequested?.Invoke(
+            new ToastData(
+                ToastType.Assignment,
+                "BKeL - Bài tập mới",
+                assignment.displayName + " vừa xuất hiện.",
+                5f,
+                true
+            )
+        );
+
         
     }
 }

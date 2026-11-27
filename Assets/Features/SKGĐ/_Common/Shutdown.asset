@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd8b5deeca748d408d203d10963db02, type: 3}
+  m_Name: Shutdown
+  m_EditorClassIdentifier: Assembly-CSharp::InterruptionDefinition
+  displayName: Shutdown
+  prefab: {fileID: 7324806237529892278, guid: 292b207489505af4e8f6ab23b26b431d, type: 3}
+  duration: 3
