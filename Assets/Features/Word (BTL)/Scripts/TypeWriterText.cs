@@ -3,6 +3,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using System;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.Utilities;
 
 [RequireComponent(typeof(TMP_Text))]
 public class TypeWriterText : MonoBehaviour
@@ -13,8 +15,10 @@ public class TypeWriterText : MonoBehaviour
     [SerializeField] private StressBar stressBar;
     [SerializeField] private ProgressBar progressBar;
     [SerializeField] private GameSaveManager saveManager;
+    [SerializeField] private TMP_Text saveStatusText;
     private WindowFrame windowFrame;
-
+    private IDisposable anyKeySubscription;
+    private bool saved;
     private ReadData readData = new ReadData();
 
     private string typedTextAll = "";
@@ -47,6 +51,19 @@ public class TypeWriterText : MonoBehaviour
 
     public event Action OnBTLChanged;
 
+    private void OnEnable()
+    {
+        anyKeySubscription = InputSystem.onAnyButtonPress.Call(
+            HandleAnyButtonPress
+        );
+    }
+
+    private void OnDisable()
+    {
+        anyKeySubscription?.Dispose();
+        anyKeySubscription = null;
+    }
+
     void Start()
     {
         selectedFileIndex = UnityEngine.Random.Range(
@@ -67,7 +84,6 @@ public class TypeWriterText : MonoBehaviour
 
     void Update()
     {
-        keyPress();
 
         cursorTimer += Time.deltaTime;
 
@@ -80,25 +96,53 @@ public class TypeWriterText : MonoBehaviour
         }
     }
 
-    private void keyPress()
+    private void HandleAnyButtonPress(InputControl control)
     {
-        if (!windowFrame.IsFocused) return;
-        if (GameManager.State != GameState.Playing) return;
+        if (!(control.device is Keyboard keyboard))
+        {
+            return;
+        }
+
+        if (!(control is KeyControl))
+        {
+            return;
+        }
+
+        if (GameManager.State != GameState.Playing)
+        {
+            return;
+        }
+
+        if (windowFrame == null || !windowFrame.IsFocused)
+        {
+            return;
+        }
 
         if (!stressBar.GetCanType())
-            return;
-
-        if (Keyboard.current != null)
         {
-            if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
-            {
-                KeyPressSuccess();
-            }
+            return;
         }
+
+
+        // if (keyboard.shiftKey.isPressed &&           //fix sau
+        //     control == keyboard.sKey)
+        // {
+        //     SaveGame();
+        //     return;
+        // }
+
+        KeyPressSuccess();
     }
 
     private void KeyPressSuccess()
     {
+        if (saved)
+        {
+            saved = false;
+            saveStatusText.text = "Save*";
+            saveStatusText.color = Color.black;
+        }
+
         if (currentCharInPage >= generatedText.Length)
             return;
 
@@ -216,6 +260,7 @@ public class TypeWriterText : MonoBehaviour
 
     public void SaveGame()
     {
+        saved = true;
         GameSaveData data = new GameSaveData();
 
         data.typedTextAll = typedTextAll;
@@ -233,6 +278,9 @@ public class TypeWriterText : MonoBehaviour
 
         data.stressValue = stressBar.GetStress();
         data.progressValue = progressBar.GetProgress();
+
+        saveStatusText.text = "Saved";
+        saveStatusText.color = Color.red;
 
         saveManager.Save(data);
 
@@ -294,5 +342,39 @@ public class TypeWriterText : MonoBehaviour
     public float GetBTLProgress()
     {
         return progressBar.GetProgress();
+    }
+
+    public void RestoreLastCheckpoint()
+    {
+        if (saveManager != null && saveManager.HasSave())
+        {
+            LoadGame();
+        }
+        else
+        {
+            ResetToBeginning();
+        }
+    }
+
+    private void ResetToBeginning()
+    {
+        selectedFileIndex = 0;
+
+        string content = readData.ReadFiles(
+            file_content_path[selectedFileIndex]
+        );
+
+        typedTextAll = "";
+        totalWords = 0;
+        totalChar = 0;
+        currentPage = 1;
+        isKeyA = true;
+
+        stressBar.SetStressValue(0f);
+        progressBar.SetMaxWords(content.Length);
+
+        GenerateRandomText();
+
+        OnBTLChanged?.Invoke();
     }
 }
